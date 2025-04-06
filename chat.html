@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅 앱</title>
+    <link rel="stylesheet" href="chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <div class="header-title">
+                <span id="chat-title">CHAT</span>
+                <i class="fas fa-chevron-down" id="chat-dropdown-toggle"></i>
+                <div class="chat-dropdown">
+                    <a href="#" class="dropdown-item">일반 채팅</a>
+                    <a href="#" class="dropdown-item">단체 채팅</a>
+                    <a href="#" class="dropdown-item">비밀 채팅</a>
+                </div>
+            </div>
+            <div class="menu-panel">
+                <button class="menu-icon" id="menu-toggle">⋮</button>
+                <div class="panel">
+                    <button class="panel-item" id="nickname-btn">
+                        <i class="fas fa-user-edit"></i> 닉네임 변경
+                    </button>
+                    <button class="panel-item">
+                        <i class="fas fa-copy"></i> 링크복사
+                    </button>
+                    <button class="panel-item" id="background-btn">
+                        <i class="fas fa-image"></i> 배경화면 변경
+                    </button>
+                    <button class="panel-item">
+                        <i class="fas fa-cog"></i> 설정
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-messages">
+            <!-- AI 어시스턴트 메시지만 남기고 나머지는 삭제 -->
+        </div>
+        
+        <div class="input-area">
+            <div class="attach-container">
+                <button class="attach-button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="attach-menu">
+                    <button class="attach-item">
+                        <i class="fas fa-camera"></i> 카메라
+                    </button>
+                    <button class="attach-item">
+                        <i class="fas fa-image"></i> 사진
+                    </button>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <div class="image-preview-row" id="message-image-preview" style="display: none;">
+                    <div class="message-image-container">
+                        <img src="" alt="첨부된 이미지" id="message-image">
+                        <button class="remove-message-image" id="remove-message-image-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <input type="text" class="message-input" placeholder="메시지 입력...">
+            </div>
+            <button class="send-button">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 닉네임 변경 모달 -->
+    <div class="modal" id="nickname-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">닉네임 변경</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nickname-input">새 닉네임</label>
+                    <input type="text" id="nickname-input" class="form-control" placeholder="새 닉네임 입력" maxlength="20">
+                </div>
+                <p class="help-text">* 이니셜은 닉네임의 첫 글자가 자동으로 사용됩니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" id="cancel-nickname">취소</button>
+                <button class="btn btn-primary" id="save-nickname">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 배경화면 변경 모달 -->
+    <div class="modal" id="background-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">배경화면 변경</h2>
+            </div>
+            <div class="modal-body">
+                <div class="background-options">
+                    <div class="background-option active" data-color="#f9f9f9">
+                        <div class="bg-preview" style="background-color: #f9f9f9;"></div>
+                        <span>기본</span>
+                    </div>
+                    <div class="background-option" data-color="#e8f5e9">
+                        <div class="bg-preview" style="background-color: #e8f5e9;"></div>
+                        <span>연두색</span>
+                    </div>
+                    <div class="background-option" data-color="#e3f2fd">
+                        <div class="bg-preview" style="background-color: #e3f2fd;"></div>
+                        <span>하늘색</span>
+                    </div>
+                    <div class="background-option" data-color="#fff8e1">
+                        <div class="bg-preview" style="background-color: #fff8e1;"></div>
+                        <span>노란색</span>
+                    </div>
+                    <div class="background-option" data-color="#f3e5f5">
+                        <div class="bg-preview" style="background-color: #f3e5f5;"></div>
+                        <span>보라색</span>
+                    </div>
+                    <div class="background-option" data-color="#ffebee">
+                        <div class="bg-preview" style="background-color: #ffebee;"></div>
+                        <span>분홍색</span>
+                    </div>
+                </div>
+                <div class="image-upload-section">
+                    <div class="divider">
+                        <span>또는</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bg-image-upload">이미지 업로드</label>
+                        <div class="upload-button-container">
+                            <button class="upload-button" id="select-image-btn">
+                                <i class="fas fa-image"></i> 사진 선택
+                            </button>
+                            <input type="file" id="bg-image-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="selected-image-preview" id="image-preview-container" style="display: none;">
+                            <img id="image-preview" src="" alt="선택한 이미지">
+                            <button class="remove-image" id="remove-image-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" id="cancel-background">취소</button>
+                <button class="btn btn-primary" id="save-background">적용</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html> 
