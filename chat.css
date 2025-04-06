@@ -232,8 +232,9 @@ body {
 
 .input-wrapper {
     flex: 1;
-    margin-right: 10px; /* 전송 버튼과의 간격 */
+    margin-right: 12px; /* 전송 버튼과의 간격 증가 */
     position: relative;
+    max-width: calc(100% - 65px); /* 전송 버튼 공간 확보 */
 }
 
 .image-preview-row {
@@ -284,6 +285,7 @@ body {
     font-size: 14px;
     outline: none;
     resize: none; /* 크기 조정 방지 */
+    box-sizing: border-box; /* 패딩 포함한 너비 계산 */
 }
 
 .message-input::placeholder {
@@ -292,8 +294,9 @@ body {
 }
 
 .send-button {
-    width: 40px;
-    height: 40px;
+    width: 42px; /* 버튼 크기 약간 증가 */
+    height: 42px;
+    min-width: 42px; /* 최소 너비 설정 */
     border-radius: 50%;
     background-color: #4e9df3;
     color: white;
@@ -303,6 +306,7 @@ body {
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0; /* 크기 축소 방지 */
+    margin-left: auto; /* 오른쪽 정렬 */
 }
 
 .menu-panel {
@@ -762,14 +766,15 @@ body {
         bottom: 0;
         padding: 8px 10px; /* 패딩 축소 */
         flex-wrap: nowrap; /* 줄바꿈 방지 */
+        justify-content: space-between; /* 요소 간격 분배 */
     }
     
     .input-wrapper {
-        max-width: calc(100% - 50px); /* 전송 버튼 너비 고려 */
+        max-width: calc(100% - 65px); /* 전송 버튼 너비 고려하여 증가 */
     }
     
     .send-button {
-        min-width: 40px; /* 최소 너비 설정 */
+        min-width: 42px; /* 최소 너비 설정 */
         flex-shrink: 0; /* 크기 축소 방지 */
     }
     
