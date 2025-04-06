@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 예시 자동 응답 (데모용)
     setTimeout(() => {
-        addMessage('뷔얘봇', '안녕하세요. 뷔얘봇입니다.', 'V', '#ff9800');
+        addMessage('뷔얘봇', '안녕하세요. 뷔얘봇입니다. 무엇을 도와드릴까요?', 'V', '#ff9800');
         chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 300);
+    }, 1000);
 }); 
