@@ -161,11 +161,10 @@ body {
     padding: 10px 15px;
     border-top: 1px solid #e0e0e0;
     display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center;
     background-color: #fff;
     width: 100%;
     z-index: 10;
-    flex-shrink: 0; /* 크기 축소 방지 */
 }
 
 .attach-container {
@@ -232,9 +231,9 @@ body {
 
 .input-wrapper {
     flex: 1;
-    margin-right: 15px; /* 전송 버튼과의 간격 증가 */
+    margin-right: 18px; /* 전송 버튼과의 간격 더 늘림 */
     position: relative;
-    max-width: calc(100% - 60px); /* 전송 버튼 공간 확보 */
+    max-width: calc(100% - 70px); /* 전송 버튼 공간 더 확보 */
 }
 
 .image-preview-row {
@@ -766,7 +765,7 @@ body {
     }
     
     .input-wrapper {
-        max-width: calc(100% - 65px); /* 전송 버튼 너비 고려하여 증가 */
+        max-width: calc(100% - 70px); /* 모바일에서도 전송 버튼 공간 확보 */
     }
     
     .send-button {
