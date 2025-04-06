@@ -239,7 +239,7 @@ body {
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 20px;
-    padding: 0 6px 0 12px;
+    padding: 0 12px;
     height: 38px;
 }
 
@@ -251,6 +251,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 36px; /* 버튼 공간 확보 */
 }
 
 .message-input {
@@ -272,7 +273,10 @@ body {
     flex-shrink: 0;
     font-size: 14px;
     padding: 0;
-    margin-left: 5px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .send-button:after {
